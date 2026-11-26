@@ -1,0 +1,11 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @return array<string, string>
+ */
+return [
+    'draft' => 'Черновик',
+    'posted' => 'Проведён',
+];
