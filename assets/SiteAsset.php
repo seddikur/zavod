@@ -9,7 +9,7 @@ use yii\web\View;
 use yii\web\YiiAsset;
 
 /**
- * Публичный фронт (лендинг «Город мастеров»).
+ * Публичный фронт действующего АБЗ.
  */
 class SiteAsset extends AssetBundle
 {

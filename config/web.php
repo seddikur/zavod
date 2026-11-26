@@ -8,7 +8,7 @@ $params['adminRoles'] = require __DIR__ . '/admin-roles.php';
 
 $config = [
     'id' => 'basic',
-    'name' => 'Город мастеров',
+    'name' => 'Завод',
     'language' => 'ru',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],

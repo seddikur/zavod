@@ -92,7 +92,7 @@ $this->params['fullWidth'] = true;
             <?php endforeach ?>
             <p style="margin-top: var(--space-4);">
                 <a href="<?= Html::encode(Url::to(['/site/faq'])) ?>" class="card__more">
-                    Все вопросы →
+                    Все вопросы диспетчерской →
                 </a>
             </p>
         </div>

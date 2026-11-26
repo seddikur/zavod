@@ -99,9 +99,68 @@
         });
     }
 
+    function reindexItemRows(tbody) {
+        var prefix = tbody.closest('[data-cc-item-rows]').getAttribute('data-cc-item-rows-prefix') || 'RecipeItem';
+        var rows = tbody.querySelectorAll('[data-cc-item-row]');
+        rows.forEach(function (row, index) {
+            row.querySelectorAll('[name]').forEach(function (input) {
+                var name = input.getAttribute('name');
+                if (!name || name.indexOf(prefix + '[') !== 0) {
+                    return;
+                }
+                input.setAttribute('name', prefix + '[' + index + ']' + name.replace(/^[^[]+\[\d+\]/, ''));
+            });
+        });
+    }
+
+    function initDocumentItemRows() {
+        document.querySelectorAll('[data-cc-item-rows]').forEach(function (wrap) {
+            var tbody = wrap.querySelector('[data-cc-item-rows-body]');
+            var tpl = wrap.querySelector('[data-cc-item-row-tpl]');
+            if (!tbody || !tpl) {
+                return;
+            }
+
+            var addBtn = wrap.querySelector('[data-cc-item-row-add]');
+            if (addBtn) {
+                addBtn.addEventListener('click', function () {
+                    var html = tpl.innerHTML.replace(/__index__/g, String(tbody.querySelectorAll('[data-cc-item-row]').length));
+                    var temp = document.createElement('tbody');
+                    temp.innerHTML = html.trim();
+                    var row = temp.firstElementChild;
+                    if (row) {
+                        tbody.appendChild(row);
+                        reindexItemRows(tbody);
+                    }
+                });
+            }
+
+            wrap.addEventListener('click', function (e) {
+                var removeBtn = e.target.closest('[data-cc-item-row-remove]');
+                if (!removeBtn) {
+                    return;
+                }
+                var row = removeBtn.closest('[data-cc-item-row]');
+                if (!row) {
+                    return;
+                }
+                var rows = tbody.querySelectorAll('[data-cc-item-row]');
+                if (rows.length <= 1) {
+                    row.querySelectorAll('select, input:not([type=hidden])').forEach(function (el) {
+                        el.value = '';
+                    });
+                    return;
+                }
+                row.remove();
+                reindexItemRows(tbody);
+            });
+        });
+    }
+
     function boot() {
         initSidebarToggle();
         initCrudDeleteConfirm();
+        initDocumentItemRows();
     }
 
     if (document.readyState === 'loading') {

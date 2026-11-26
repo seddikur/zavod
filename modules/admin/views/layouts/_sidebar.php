@@ -25,6 +25,72 @@ $brandLetter = mb_strtoupper(mb_substr($appName, 0, 1));
 
 $items = [
     [
+        'label' => 'Материалы',
+        'icon' => 'category',
+        'url' => ['/admin/material/index'],
+        'controller' => 'material',
+    ],
+    [
+        'label' => 'Категории',
+        'icon' => 'folder',
+        'url' => ['/admin/material-category/index'],
+        'controller' => 'material-category',
+    ],
+    [
+        'label' => 'Склады',
+        'icon' => 'warehouse',
+        'url' => ['/admin/warehouse/index'],
+        'controller' => 'warehouse',
+    ],
+    [
+        'label' => 'Единицы',
+        'icon' => 'straighten',
+        'url' => ['/admin/unit/index'],
+        'controller' => 'unit',
+    ],
+    [
+        'label' => 'Покупатели',
+        'icon' => 'store',
+        'url' => ['/admin/customer/index'],
+        'controller' => 'customer',
+    ],
+    [
+        'label' => 'Поставщики',
+        'icon' => 'local_shipping',
+        'url' => ['/admin/supplier/index'],
+        'controller' => 'supplier',
+    ],
+    [
+        'label' => 'Остатки',
+        'icon' => 'inventory_2',
+        'url' => ['/admin/material-stock/index'],
+        'controller' => 'material-stock',
+    ],
+    [
+        'label' => 'Рецепты',
+        'icon' => 'science',
+        'url' => ['/admin/recipe/index'],
+        'controller' => 'recipe',
+    ],
+    [
+        'label' => 'Приходы',
+        'icon' => 'input',
+        'url' => ['/admin/receipt/index'],
+        'controller' => 'receipt',
+    ],
+    [
+        'label' => 'Корректировки',
+        'icon' => 'tune',
+        'url' => ['/admin/adjustment/index'],
+        'controller' => 'adjustment',
+    ],
+    [
+        'label' => 'Отгрузки',
+        'icon' => 'local_shipping',
+        'url' => ['/admin/production-order/index'],
+        'controller' => 'production-order',
+    ],
+    [
         'label' => 'Настройки',
         'icon' => 'settings',
         'url' => ['/admin/settings/index'],

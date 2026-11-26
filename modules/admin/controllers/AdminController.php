@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace app\modules\admin\controllers;
 
+use app\modules\admin\traits\CrudFlashTrait;
 use Yii;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
@@ -16,6 +17,7 @@ use yii\web\ForbiddenHttpException;
  */
 abstract class AdminController extends Controller
 {
+    use CrudFlashTrait;
     /**
      * Экшены, доступные без авторизации.
      *
