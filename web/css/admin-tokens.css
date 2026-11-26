@@ -1,0 +1,67 @@
+/*!
+ * Admin Clean Card UI — design tokens (colors & shared vars).
+ * Подключается перед admin.css.
+ */
+
+.admin-layout {
+    /* Surfaces */
+    --cc-bg: #f4f4f5;
+    --cc-bg-soft: #eef2f6;
+    --cc-bg-hover: #fafafa;
+    --cc-surface: #ffffff;
+    --cc-surface-glass: rgba(255, 255, 255, 0.92);
+    --cc-surface-soft: rgba(255, 255, 255, 0.9);
+    --cc-confirm-bg: #ececef;
+
+    /* Text */
+    --cc-text: #18181b;
+    --cc-text-strong: #52525b;
+    --cc-muted: #71717a;
+    --cc-on-primary: #ffffff;
+
+    /* Borders */
+    --cc-line: #e4e4e7;
+    --cc-line-strong: #d4d4d8;
+    --cc-primary-border: #cceee7;
+
+    /* Primary */
+    --cc-primary: #10b981;
+    --cc-primary-hover: #059669;
+    --cc-primary-soft: #ecfdf5;
+    --cc-primary-ring: rgba(16, 185, 129, 0.14);
+    --cc-primary-ring-alt: rgba(15, 118, 110, 0.12);
+
+    /* Danger */
+    --cc-danger: #dc2626;
+    --cc-danger-hover: #dc2626;
+    --cc-danger-border: #fecaca;
+    --cc-danger-border-strong: #fca5a5;
+    --cc-danger-bg: #fef2f2;
+    --cc-danger-bg-hover: #fee2e2;
+
+    /* Overlay */
+    --cc-overlay: rgba(15, 23, 42, 0.28);
+
+    /* Shadows */
+    --cc-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.04);
+    --cc-shadow-hover: 0 2px 4px rgba(15, 23, 42, 0.05), 0 10px 24px rgba(15, 23, 42, 0.07);
+
+    /* Layout / type */
+    --cc-radius: 12px;
+    --cc-radius-sm: 8px;
+    --cc-sidebar-w: 260px;
+    --cc-font: 'Nunito', 'Segoe UI', sans-serif;
+
+    /* Icon action buttons (CrudActionColumn) */
+    --admin-icon-btn-size: 24px;
+    --admin-icon-btn-glyph-size: 16px;
+    --admin-icon-btn-radius: 6px;
+    --admin-color-green-accent: #22c55e;
+    --admin-color-green-bg: rgba(34, 197, 94, 0.12);
+    --admin-color-edit-accent: #f59e0b;
+    --admin-color-edit-bg: rgba(245, 158, 11, 0.14);
+    --admin-color-icon-muted: #a1a1aa;
+    --admin-color-danger: #ef4444;
+    --admin-color-danger-hover: #dc2626;
+    --admin-color-danger-bg: rgba(239, 68, 68, 0.12);
+}

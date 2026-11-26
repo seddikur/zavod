@@ -1,0 +1,38 @@
+services:
+  web:
+    image: yiisoftware/yii2-php:8.2-apache
+    container_name: yii2_web
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/app
+    working_dir: /app
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: mydb
+      DB_USER: user
+      DB_PASSWORD: password
+      # debug без IDE часто «висит» запрос — включай точечно при отладке
+      XDEBUG_MODE: off
+      YII_ENV: local
+    command: >
+      bash -c "test -f config/db.php || cp config/db.php.example config/db.php;
+      docker-php-entrypoint apache2-foreground"
+
+  db:
+    image: mysql:5.7.34
+    container_name: yii2_db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

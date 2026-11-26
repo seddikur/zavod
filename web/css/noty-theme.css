@@ -1,0 +1,37 @@
+/*!
+ * Noty color overrides — цвета проекта (admin-tokens).
+ * Подключается после noty.min.css.
+ */
+
+.noty_theme__relax.noty_type__success,
+.noty_theme__mint.noty_type__success {
+    background-color: #10b981 !important; /* --cc-primary */
+    border-color: #059669 !important;     /* --cc-primary-hover */
+    color: #ffffff !important;
+}
+
+.noty_theme__relax.noty_type__error,
+.noty_theme__mint.noty_type__error {
+    background-color: #dc2626 !important; /* --cc-danger */
+    border-color: #dc2626 !important;
+    color: #ffffff !important;
+}
+
+.noty_theme__relax.noty_type__warning,
+.noty_theme__mint.noty_type__warning {
+    background-color: #f59e0b !important; /* --admin-color-edit-accent */
+    border-color: #d97706 !important;
+    color: #ffffff !important;
+}
+
+.noty_theme__relax.noty_type__info,
+.noty_theme__mint.noty_type__info {
+    background-color: #3b82f6 !important;
+    border-color: #2563eb !important;
+    color: #ffffff !important;
+}
+
+.noty_theme__relax .noty_progressbar,
+.noty_theme__mint .noty_progressbar {
+    opacity: 0.35;
+}

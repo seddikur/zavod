@@ -1,0 +1,390 @@
+/*!
+ * Admin Clean Card UI — CRUD pages (GridView, forms, action buttons).
+ * Depends on admin-tokens.css
+ */
+
+/* ---------- CRUD pages ---------- */
+.admin-layout .cc-page-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.admin-layout .cc-page-title {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--cc-text);
+}
+
+.admin-layout .cc-page-subtitle {
+    margin: 0.25rem 0 0;
+    color: var(--cc-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.admin-layout .cc-page-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.admin-layout .cc-btn,
+.admin-layout .btn.cc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: var(--cc-radius-sm);
+    border: 1px solid var(--cc-line);
+    background: var(--cc-surface);
+    color: var(--cc-text);
+    font-weight: 700;
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+
+.admin-layout .cc-btn:hover,
+.admin-layout .btn.cc-btn:hover {
+    background: var(--cc-bg);
+    border-color: var(--cc-line-strong);
+    color: var(--cc-text);
+}
+
+.admin-layout .cc-btn-primary,
+.admin-layout .btn.cc-btn-primary {
+    border-color: var(--cc-primary);
+    background: var(--cc-primary);
+    color: var(--cc-on-primary);
+}
+
+.admin-layout .cc-btn-primary:hover,
+.admin-layout .btn.cc-btn-primary:hover {
+    background: var(--cc-primary-hover);
+    border-color: var(--cc-primary-hover);
+    color: var(--cc-on-primary);
+}
+
+.admin-layout .cc-btn-danger,
+.admin-layout .btn.cc-btn-danger {
+    border-color: var(--cc-danger-border);
+    background: var(--cc-danger-bg);
+    color: var(--cc-danger);
+}
+
+.admin-layout .cc-btn-danger:hover,
+.admin-layout .btn.cc-btn-danger:hover {
+    background: var(--cc-danger-bg-hover);
+    border-color: var(--cc-danger-border-strong);
+    color: var(--cc-danger);
+}
+
+.admin-layout .cc-flash-stack {
+    margin-bottom: 1rem;
+}
+
+.admin-layout .cc-alert {
+    border-radius: var(--cc-radius-sm);
+    border: 1px solid var(--cc-line);
+}
+
+.admin-layout .cc-crud-card {
+    animation: cc-fade-up .3s ease both;
+}
+
+.admin-layout .cc-crud-card:hover {
+    transform: none !important;
+}
+
+.admin-layout .cc-card-head {
+    padding: 0.95rem 1.25rem;
+    border-bottom: 1px solid var(--cc-line);
+}
+
+.admin-layout .cc-card-head__title {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.admin-layout .cc-grid .table {
+    margin: 0;
+    --bs-table-bg: transparent;
+}
+
+.admin-layout .cc-grid .table thead th {
+    background: var(--cc-bg);
+    border-bottom: 1px solid var(--cc-line);
+    color: var(--cc-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 0.85rem 1rem;
+}
+
+.admin-layout .cc-grid .table thead th a {
+    color: var(--cc-muted);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.admin-layout .cc-grid .table thead th a:hover,
+.admin-layout .cc-grid .table thead th a:focus {
+    color: var(--cc-primary);
+    text-decoration: none;
+}
+
+.admin-layout .cc-grid .table thead th a:visited {
+    color: var(--cc-muted);
+    text-decoration: none;
+}
+
+.admin-layout .cc-grid .table tbody td {
+    border-color: var(--cc-line);
+    vertical-align: middle;
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+}
+
+.admin-layout .cc-grid .table tbody tr:hover {
+    background: var(--cc-bg-hover);
+}
+
+.admin-layout .cc-grid .summary {
+    padding: 0.75rem 1rem;
+    color: var(--cc-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-top: 1px solid var(--cc-line);
+}
+
+.admin-layout .cc-grid .pagination {
+    margin: 0;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--cc-line);
+}
+
+.admin-layout .cc-filters .form-control,
+.admin-layout .cc-form .form-control,
+.admin-layout .cc-form .form-select {
+    border: 1px solid var(--cc-line);
+    border-radius: var(--cc-radius-sm);
+    box-shadow: none;
+    padding: 0.6rem 0.85rem;
+}
+
+.admin-layout .cc-filters .form-control:focus,
+.admin-layout .cc-form .form-control:focus,
+.admin-layout .cc-form .form-select:focus {
+    border-color: var(--cc-primary);
+    box-shadow: 0 0 0 3px var(--cc-primary-ring);
+}
+
+.admin-layout .cc-form .form-label {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--cc-text);
+}
+
+.admin-layout .cc-detail .table {
+    margin: 0;
+}
+
+.admin-layout .cc-detail .table th {
+    width: 28%;
+    color: var(--cc-muted);
+    font-weight: 700;
+    background: var(--cc-bg);
+    border-color: var(--cc-line);
+}
+
+.admin-layout .cc-detail .table td {
+    border-color: var(--cc-line);
+}
+
+.admin-layout .cc-action-btns {
+    display: inline-flex;
+    gap: 0.35rem;
+    white-space: nowrap;
+}
+
+.admin-layout .cc-action-btns .btn {
+    padding: 0.3rem 0.55rem;
+    font-size: 0.8rem;
+    border-radius: 6px;
+}
+
+/* ---------- CRUD action widget (размеры как admin-icon-btn: 24×24 / 16) ---------- */
+.admin-layout .cc-crud-actions-cell {
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle !important;
+}
+
+.admin-layout .cc-crud-actions {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--admin-icon-btn-size);
+    padding: 0;
+    border-radius: var(--admin-icon-btn-radius);
+    transition: background-color .15s ease;
+}
+
+.admin-layout .cc-crud-actions.is-confirming {
+    background: var(--cc-confirm-bg);
+    padding: 2px 4px;
+    min-height: calc(var(--admin-icon-btn-size) + 4px);
+}
+
+.admin-layout .cc-crud-actions__main,
+.admin-layout .cc-crud-actions__confirm {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15rem;
+}
+
+.admin-layout .cc-crud-actions__delete-form {
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-layout .cc-crud-actions.is-confirming .cc-crud-actions__main {
+    display: none;
+}
+
+.admin-layout .cc-crud-actions__confirm {
+    display: none;
+}
+
+.admin-layout .cc-crud-actions.is-confirming .cc-crud-actions__confirm {
+    display: inline-flex;
+}
+
+.admin-layout .cc-act {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--admin-icon-btn-size);
+    height: var(--admin-icon-btn-size);
+    padding: 0;
+    border-radius: var(--admin-icon-btn-radius);
+    border: 1px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    vertical-align: middle;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.admin-layout .cc-act .material-symbols-rounded {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--admin-icon-btn-glyph-size);
+    height: var(--admin-icon-btn-glyph-size);
+    font-size: var(--admin-icon-btn-glyph-size);
+    line-height: 1;
+    color: inherit;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+}
+
+.admin-layout .cc-act-view {
+    color: var(--admin-color-green-accent);
+    border-color: var(--admin-color-green-accent);
+}
+
+.admin-layout .cc-act-view:hover,
+.admin-layout .cc-act-view:focus-visible {
+    color: var(--admin-color-green-accent);
+    border-color: var(--admin-color-green-accent);
+    background: var(--admin-color-green-bg);
+}
+
+.admin-layout .cc-act-edit {
+    color: var(--admin-color-edit-accent);
+    border-color: var(--admin-color-edit-accent);
+}
+
+.admin-layout .cc-act-edit:hover,
+.admin-layout .cc-act-edit:focus-visible {
+    color: var(--admin-color-edit-accent);
+    border-color: var(--admin-color-edit-accent);
+    background: var(--admin-color-edit-bg);
+}
+
+.admin-layout .cc-act-delete {
+    color: var(--admin-color-icon-muted);
+    border-color: var(--admin-color-icon-muted);
+}
+
+.admin-layout .cc-act-delete:hover,
+.admin-layout .cc-act-delete:focus-visible {
+    color: var(--admin-color-danger);
+    border-color: var(--admin-color-danger);
+    background: var(--admin-color-danger-bg);
+}
+
+.admin-layout .cc-act-confirm-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--admin-icon-btn-size);
+    padding: 0 0.65rem;
+    border-radius: 999px;
+    background: var(--admin-color-danger);
+    color: var(--cc-on-primary) !important;
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 1;
+    text-decoration: none;
+    border: 0;
+    transition: background-color .15s ease;
+}
+
+.admin-layout .cc-act-confirm-delete:hover {
+    background: var(--admin-color-danger-hover);
+    color: var(--cc-on-primary) !important;
+}
+
+.admin-layout .cc-act-cancel {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--admin-icon-btn-size);
+    height: var(--admin-icon-btn-size);
+    padding: 0;
+    border: 0;
+    border-radius: var(--admin-icon-btn-radius);
+    background: transparent;
+    color: var(--admin-color-icon-muted);
+    cursor: pointer;
+    transition: background-color .15s ease, color .15s ease;
+}
+
+.admin-layout .cc-act-cancel:hover {
+    background: var(--cc-surface-soft);
+    color: var(--cc-text-strong);
+}
+
+.admin-layout .cc-act-cancel .material-symbols-rounded {
+    font-size: var(--admin-icon-btn-glyph-size);
+    line-height: 1;
+}
+
+.admin-layout .cc-empty {
+    padding: 2rem 1rem;
+    text-align: center;
+    color: var(--cc-muted);
+    font-weight: 600;
+}
+

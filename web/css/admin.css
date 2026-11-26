@@ -1,0 +1,500 @@
+/*!
+ * Admin Clean Card UI — card-based admin theme.
+ * Цвета/токены: admin-tokens.css
+ * Scoped under .admin-layout so it does not affect the public site.
+ */
+
+.admin-layout {
+    font-family: var(--cc-font);
+    color: var(--cc-text);
+    background: var(--cc-bg);
+    min-height: 100vh;
+}
+
+.admin-layout,
+.admin-layout .navbar,
+.admin-layout .sidenav,
+.admin-layout .btn,
+.admin-layout .form-control,
+.admin-layout .card {
+    font-family: var(--cc-font);
+}
+
+/* ---------- Shell ---------- */
+.admin-layout .main-content {
+    position: relative;
+    min-height: 100vh;
+    transition: margin-left .25s ease;
+}
+
+@media (min-width: 1200px) {
+    .admin-layout:not(.admin-layout--guest) .main-content {
+        margin-left: calc(var(--cc-sidebar-w) + 1.5rem);
+    }
+}
+
+.admin-layout .admin-content {
+    padding: 5.25rem 1.25rem 2rem;
+}
+
+/* ---------- Top bar card (fixed) ---------- */
+.admin-layout .cc-topbar {
+    position: fixed;
+    top: 1rem;
+    right: 1.25rem;
+    left: 1.25rem;
+    z-index: 1020;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0;
+    padding: 0.75rem 1.15rem;
+    min-height: 3.5rem;
+    background: var(--cc-surface-glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--cc-line);
+    border-radius: var(--cc-radius);
+    box-shadow: var(--cc-shadow);
+}
+
+@media (min-width: 1200px) {
+    .admin-layout:not(.admin-layout--guest) .cc-topbar {
+        left: calc(var(--cc-sidebar-w) + 2.5rem);
+    }
+}
+
+.admin-layout .cc-topbar-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--cc-text);
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.admin-layout .cc-topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.admin-layout .cc-user {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--cc-line);
+    border-radius: 999px;
+    background: var(--cc-bg);
+    color: var(--cc-text);
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.admin-layout .cc-user .material-symbols-rounded {
+    font-size: 1.25rem;
+    color: var(--cc-primary);
+}
+
+.admin-layout .cc-menu-toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--cc-line);
+    border-radius: var(--cc-radius-sm);
+    background: var(--cc-surface);
+    color: var(--cc-text);
+    cursor: pointer;
+}
+
+.admin-layout .cc-menu-toggle .sidenav-toggler-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.admin-layout .cc-menu-toggle .sidenav-toggler-line {
+    display: block;
+    width: 15px;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--cc-text);
+}
+
+/* ---------- Sidebar card ---------- */
+.admin-layout .sidenav {
+    position: fixed;
+    top: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 1030;
+    width: var(--cc-sidebar-w);
+    max-width: var(--cc-sidebar-w);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    overflow: hidden;
+    user-select: none;
+    background: var(--cc-surface);
+    border: 1px solid var(--cc-line);
+    border-radius: var(--cc-radius);
+    box-shadow: var(--cc-shadow);
+    transition: transform .25s ease, opacity .25s ease;
+    animation: cc-fade-in .4s ease both;
+}
+
+.admin-layout .sidenav .sidenav-header {
+    position: relative;
+    flex: 0 0 auto;
+    padding-bottom: 1rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--cc-line);
+}
+
+.admin-layout .sidenav .cc-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    color: var(--cc-text);
+}
+
+.admin-layout .sidenav .cc-brand-mark {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--cc-radius-sm);
+    background: var(--cc-primary);
+    color: var(--cc-on-primary);
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.admin-layout .sidenav .cc-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.admin-layout .sidenav .cc-brand-title {
+    font-weight: 700;
+    font-size: 0.98rem;
+}
+
+.admin-layout .sidenav .cc-brand-sub {
+    font-size: 0.72rem;
+    color: var(--cc-muted);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.admin-layout .sidenav .cc-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--cc-line);
+    border-radius: var(--cc-radius-sm);
+    background: var(--cc-bg);
+    color: var(--cc-muted);
+    cursor: pointer;
+}
+
+.admin-layout .sidenav .cc-nav-label {
+    margin: 0 0.35rem 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cc-muted);
+}
+
+.admin-layout .sidenav #sidenav-collapse-main {
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+
+.admin-layout .sidenav .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.admin-layout .sidenav .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    width: 100%;
+    margin: 0;
+    padding: 0.65rem 0.7rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--cc-text);
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: var(--cc-radius-sm);
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+
+.admin-layout .sidenav .nav-link:hover {
+    background: var(--cc-bg);
+    border-color: var(--cc-line);
+    color: var(--cc-text);
+}
+
+.admin-layout .sidenav .nav-icon {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--cc-bg);
+    border: 1px solid var(--cc-line);
+    color: var(--cc-muted);
+}
+
+.admin-layout .sidenav .nav-icon .material-symbols-rounded {
+    font-size: 1.15rem;
+    line-height: 1;
+}
+
+.admin-layout .sidenav .nav-link.active {
+    background: var(--cc-primary-soft);
+    border-color: var(--cc-primary-border);
+    color: var(--cc-primary);
+}
+
+.admin-layout .sidenav .nav-link.active .nav-icon {
+    background: var(--cc-primary);
+    border-color: var(--cc-primary);
+    color: var(--cc-on-primary);
+}
+
+.admin-layout .sidenav .sidenav-footer {
+    position: static !important;
+    flex: 0 0 auto;
+    margin-top: auto;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--cc-line);
+}
+
+.admin-layout .cc-logout-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 100%;
+    padding: 0.65rem 1rem;
+    border: 1px solid var(--cc-line);
+    border-radius: var(--cc-radius-sm);
+    background: var(--cc-surface);
+    color: var(--cc-text);
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: border-color .15s ease, color .15s ease, background-color .15s ease;
+}
+
+.admin-layout .cc-logout-btn:hover {
+    border-color: var(--cc-danger-border);
+    background: var(--cc-danger-bg);
+    color: var(--cc-danger);
+}
+
+.admin-layout .cc-logout-btn .material-symbols-rounded {
+    font-size: 1.1rem;
+}
+
+/* Mobile sidenav */
+@media (max-width: 1199.98px) {
+    .admin-layout .cc-menu-toggle {
+        display: inline-grid;
+        place-items: center;
+    }
+
+    .admin-layout .sidenav {
+        transform: translateX(calc(-100% - 1.5rem));
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .admin-layout .sidenav .cc-close {
+        display: inline-grid;
+        place-items: center;
+    }
+
+    .admin-layout.sidenav-open .sidenav {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .admin-layout.sidenav-open::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: 1025;
+        background: var(--cc-overlay);
+        animation: cc-fade-in .2s ease both;
+    }
+}
+
+/* ---------- Content cards ---------- */
+.admin-layout .cc-card,
+.admin-layout .card {
+    background: var(--cc-surface) !important;
+    border: 1px solid var(--cc-line) !important;
+    border-radius: var(--cc-radius) !important;
+    box-shadow: var(--cc-shadow) !important;
+}
+
+.admin-layout .cc-card,
+.admin-dashboard .cc-card {
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.admin-layout .cc-card:hover,
+.admin-dashboard .cc-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--cc-shadow-hover) !important;
+    border-color: var(--cc-line-strong) !important;
+}
+
+.admin-layout .cc-badge,
+.admin-layout .badge.bg-gradient-dark,
+.admin-layout .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    border: 1px solid var(--cc-primary-border);
+    background: var(--cc-primary-soft) !important;
+    background-image: none !important;
+    color: var(--cc-primary) !important;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.admin-layout .cc-stat-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    margin-bottom: 0.85rem;
+    border-radius: var(--cc-radius-sm);
+    background: var(--cc-bg);
+    border: 1px solid var(--cc-line);
+    color: var(--cc-primary);
+    font-size: 1.05rem;
+}
+
+.admin-layout .btn.bg-gradient-dark,
+.admin-layout .btn-cc-primary {
+    border: 0;
+    border-radius: var(--cc-radius-sm);
+    background: var(--cc-primary) !important;
+    background-image: none !important;
+    box-shadow: none;
+    color: var(--cc-on-primary) !important;
+    font-weight: 700;
+    transition: background-color .15s ease, transform .15s ease;
+}
+
+.admin-layout .btn.bg-gradient-dark:hover,
+.admin-layout .btn-cc-primary:hover {
+    background: var(--cc-primary-hover) !important;
+    color: var(--cc-on-primary) !important;
+    transform: translateY(-1px);
+}
+
+/* ---------- Login ---------- */
+.admin-layout .cc-login {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background:
+        linear-gradient(180deg, var(--cc-bg-soft) 0%, var(--cc-bg) 100%);
+}
+
+.admin-layout .cc-login-card {
+    padding: 1.75rem;
+    background: var(--cc-surface);
+    border: 1px solid var(--cc-line);
+    border-radius: var(--cc-radius);
+    box-shadow: var(--cc-shadow);
+    animation: cc-fade-up .4s ease both;
+}
+
+.admin-layout .cc-login-title {
+    margin: 0 0 0.25rem;
+    font-weight: 700;
+    font-size: 1.45rem;
+    color: var(--cc-text);
+    text-align: center;
+}
+
+.admin-layout .cc-login-sub {
+    margin: 0 0 1.35rem;
+    text-align: center;
+    color: var(--cc-muted);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.admin-layout .cc-login .form-control {
+    border: 1px solid var(--cc-line);
+    border-radius: var(--cc-radius-sm);
+    background: var(--cc-surface);
+    padding: 0.7rem 0.9rem;
+    box-shadow: none;
+    color: var(--cc-text);
+}
+
+.admin-layout .cc-login .form-control:focus {
+    border-color: var(--cc-primary);
+    box-shadow: 0 0 0 3px var(--cc-primary-ring-alt);
+}
+
+.admin-layout .cc-login-footer {
+    margin-top: 1.25rem;
+    text-align: center;
+    color: var(--cc-muted);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+/* ---------- Motion ---------- */
+@keyframes cc-fade-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cc-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .admin-layout *,
+    .admin-layout *::before,
+    .admin-layout *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
